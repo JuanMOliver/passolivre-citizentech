@@ -21,7 +21,7 @@
 8. Aponte a câmera do iPhone para o QR Code exibido e abra no Expo Go.
 9. Se não conectar, tente `npx expo start --tunnel`.
 
-**Compatibilidade:** este projeto de teste usa Expo SDK 57, alinhado ao Expo Go que foi disponibilizado na App Store em setembro de 2026. Caso a versão instalada no iPhone seja outra e apresente incompatibilidade, será preciso alinhar o SDK.
+**Compatibilidade (08/11/2026):** o repositório declara Expo SDK 58 / React Native 0.88 / React 19.3.0. A versão local com SDK 58 foi aberta e testada em iPhone em 07/11/2026. A configuração remota foi atualizada depois desse teste, portanto ainda é preciso verificar que um clone limpo da revisão remota instala e funciona no dispositivo. Consulte https://expo.dev/changelog/sdk-58 .
 
 ## Teste da integração
 
@@ -32,3 +32,11 @@
 5. Grave a tela do iPhone e a web para o pitch acadêmico.
 
 A internet e a URL Supabase devem estar disponíveis. Expo Go é um ambiente de testes; ainda não é um app de App Store. Não invente entrevistas ou relatos reais.
+
+## Registro de teste realizado
+
+Em 07/11/2026, o relato de teste `Teste FIAP calçada irregular` foi criado num iPhone (SDK 58 local), apareceu na web publicada e teve `1 apoio` sincronizado entre web, banco e app, conforme `docs/VALIDACAO_IPHONE_2026-11-07.md`. Capturas e gravação ainda não anexadas.
+
+## Testes que não foram afirmados como aprovados
+
+Ampliação de texto, VoiceOver, fila offline e reconexão, testes de uso por participantes externos e compilação da revisão GitHub após migração para SDK 58. Esses itens devem ser executados e registrados honestamente.
