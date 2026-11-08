@@ -16,7 +16,7 @@
 
 Calçadas danificadas, ausência de rampas e obstáculos dificultam trajetos de idosos, pessoas com deficiência, cuidadores e outros pedestres. O PassoLivre permite registrar problemas no **aplicativo React Native/Expo**, enquanto o **painel web** permite a associações e moradores pesquisar, apoiar e exportar dados da comunidade.
 
-**A integração é real no nível de infraestrutura:** o app e a web estão configurados para ler e escrever no mesmo projeto Supabase. O banco atualiza a contagem de apoios por trigger e controla os privilégios através de **RLS**. Os testes com permissões anônimas no banco passaram; o teste ponta a ponta no iPhone ainda depende de execução e gravação no dispositivo.
+**Integração verificada em dispositivo real em 07/11/2026:** um relato TESTE foi criado no iPhone (Expo Go), persistiu no Supabase, apareceu no site publicado e recebeu um apoio na web, com contagem refletida também no app. O banco usa gatilho para contagem de apoios e políticas **RLS**. Esses resultados são testes funcionais, não uma auditoria completa de segurança ou acessibilidade. Consulte `docs/VALIDACAO_IPHONE_2026-11-07.md`.
 
 ## Estrutura
 
@@ -45,7 +45,7 @@ npx expo start
 4. Aponte a **Câmera** do iPhone para o QR Code do terminal e abra o projeto no Expo Go.
 5. Se não conectar, encerre o servidor (Ctrl+C) e tente \`npx expo start --tunnel\`.
 
-**Compatibilidade (novembro de 2026):** a versão de teste usa Expo SDK **57** (React Native 0.86 / React 19.2.3), disponibilizada no Expo Go da App Store em setembro de 2026. Quando a App Store disponibilizar apenas outro SDK, será necessário alinhar as dependências ou utilizar um development build. Veja https://docs.expo.dev/troubleshooting/expo-go-version-mismatch/ .
+**Compatibilidade (08/11/2026):** o `mobile/package.json` do repositório foi atualizado para **Expo SDK 58** (React Native 0.88 / React 19.3.0). O iPhone já havia executado uma instalação local baseada no SDK 58, mas as versões exatas da instalação local e as dependências versionadas no GitHub não foram comparadas. Após obter esta revisão, rode `npm install`, `npx expo install --check` e valide a execução. Referências: https://expo.dev/changelog/sdk-58 e https://docs.expo.dev/versions/v58.0.0/ .
 
 **Configuração Supabase:** o serviço mobile traz como fallback a URL e uma **chave publishable**, que pode ficar no código público por design. Para usar outro projeto, crie \`mobile/.env\` com \`EXPO_PUBLIC_SUPABASE_URL\` e \`EXPO_PUBLIC_SUPABASE_ANON_KEY\`; não envie essa configuração ao repositório nem use \`service_role\`. A web usa somente a chave publicável em \`web/config.js\`.
 
@@ -70,10 +70,10 @@ Verde profundo e verde-lima representam confiança e participação, com contras
 
 ## Limites e pendências acadêmicas
 
-- É necessário **executar o app em um iPhone real**, verificar os fluxos e registrar em vídeo.
-- Validar com cidadãos reais; não inventar entrevistas ou resultados.
+- **Teste em iPhone real já realizado em 07/11/2026** para abertura, cadastro e sincronização de apoio; faltam capturas, vídeo e testes complementares de acessibilidade, offline e tratamento de falhas.
+- Validar com pelo menos três pessoas impactadas, registrar respostas verdadeiras e mudanças realizadas; não inventar entrevistas ou resultados.
 - Publicar o **vídeo-pitch final de 2 a 3 minutos** com demonstração verdadeira e adicionar seu link.
 - O regulamento exige **2 a 5 integrantes**, mas apenas Juan Marco Oliver foi informado. Confirmar autorização para entrega individual ou completar a equipe.
 - Antes de uso público amplo, adicionar moderação, proteção anti-spam e política de privacidade. RLS por si só não substitui esses controles.
 
-**Situação atual:** projeto mobile e web versionados; deploy Vercel confirmado como READY; banco Supabase criado e auditado; app no iPhone ainda não verificado.
+**Situação em 08/11/2026:** app iPhone (instalação local SDK 58), Supabase e web passaram nos fluxos de relato e apoio; a configuração do SDK 58 foi publicada no GitHub nesta data. Ainda são necessárias verificação da CI após a mudança, validação com usuários reais, testes complementares, evidências visuais, sincronização com a instalação local e vídeo final.
