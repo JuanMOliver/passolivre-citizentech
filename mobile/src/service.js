@@ -2,8 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const cfg = {
   apiUrl: process.env.EXPO_PUBLIC_API_URL || '',
-  supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL || '',
-  supabaseAnonKey: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || '',
+  supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL || 'https://dvpmodytyykggvzbqkvj.supabase.co',
+  supabaseAnonKey: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || 'sb_publishable_6q10AdZ4JtyabE-wdTY1IQ_kfJiTxzv',
 };
 export const mode = cfg.apiUrl ? 'api' : cfg.supabaseUrl && cfg.supabaseAnonKey ? 'supabase' : 'demo';
 export const categories = ['Buraco','Degrau','Calçada obstruída','Rampa ausente','Piso irregular','Outro'];
