@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#103c32">
+  <meta name="description" content="PassoLivre, plataforma comunitária para identificar obstáculos de acessibilidade em calçadas.">
+  <title>PassoLivre — Cidadania em movimento</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./config.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a href="#conteudo" class="skip-link">Pular para o conteúdo principal</a>
+  <div class="shell">
+    <aside class="sidebar">
+      <a href="#inicio" class="logo" aria-label="PassoLivre: página inicial"><span>passo</span><span class="logo-accent">livre</span><small>CIDADANIA EM MOVIMENTO</small></a>
+      <nav class="side-nav" aria-label="Navegação principal">
+        <a href="#inicio" data-nav="inicio"><span aria-hidden="true">⌂</span> Visão geral</a>
+        <a href="#ocorrencias" data-nav="ocorrencias"><span aria-hidden="true">☷</span> Ocorrências</a>
+        <a href="#sobre" data-nav="sobre"><span aria-hidden="true">◎</span> Como funciona</a>
+      </nav>
+      <div class="side-footer"><strong>Um passo transforma.</strong><p>Projeto FIAP CitizenTech. Não somos um canal oficial de fiscalização.</p></div>
+    </aside>
+    <div class="content-shell">
+      <header class="topbar">
+        <div><span class="eyebrow">PAINEL COMUNITÁRIO</span><strong>São Paulo, Brasil</strong></div>
+        <span id="connection" class="status" role="status" aria-live="polite">Conectando à nuvem…</span>
+      </header>
+      <main id="conteudo" tabindex="-1">
+        <section id="inicio" data-page="inicio">
+          <div class="hero">
+            <div class="hero-copy">
+              <span class="eyebrow light">TECNOLOGIA PARA UMA CIDADE DE TODOS</span>
+              <h1>Caminhos melhores.<br><em>Para todo mundo.</em></h1>
+              <p>O que impede uma pessoa de passar merece ser visto. Relatos colaborativos tornam as barreiras da cidade mais visíveis.</p>
+              <a class="primary-button" href="#ocorrencias">Explorar ocorrências <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="hero-art" aria-hidden="true"><span>◎</span></div>
+          </div>
+          <div class="section-head"><h2>Um retrato da comunidade</h2><p>Dados atualizados do banco compartilhado com o aplicativo.</p></div>
+          <div class="stats">
+            <article class="stat-card"><span class="stat-icon">◈</span><span class="stat-label">Relatos cadastrados</span><strong id="stat-reports">—</strong><small>Obstáculos registrados</small></article>
+            <article class="stat-card"><span class="stat-icon">♡</span><span class="stat-label">Apoios comunitários</span><strong id="stat-supports">—</strong><small>Participação cidadã</small></article>
+            <article class="stat-card"><span class="stat-icon">⌖</span><span class="stat-label">Bairros citados</span><strong id="stat-neighborhoods">—</strong><small>Territórios mapeados</small></article>
+          </div>
+          <div class="dashboard-grid">
+            <article class="panel">
+              <div class="section-head compact"><h2>Principais barreiras</h2><p>Quantidade de relatos por categoria</p></div>
+              <div id="categories-chart" class="chart-bars" aria-live="polite">Consultando dados…</div>
+            </article>
+            <article class="panel">
+              <div class="section-head compact"><h2>Relatos recentes</h2><a class="text-link" href="#ocorrencias">Ver todos ↗</a></div>
+              <div id="recent-list" class="recent-list" aria-live="polite">Consultando dados…</div>
+            </article>
+          </div>
+          <div class="notice"><span aria-hidden="true">ⓘ</span><p><strong>Informação importante.</strong> Relatos marcados como EXEMPLO são fictícios. Para solicitar manutenção oficial, utilize também o <a href="https://sp156.prefeitura.sp.gov.br/portal/" target="_blank" rel="noopener noreferrer">Portal SP156</a>.</p></div>
+        </section>
+        <section id="ocorrencias" data-page="ocorrencias" hidden>
+          <div class="section-head page-head"><div><span class="eyebrow">MOBILIDADE E PARTICIPAÇÃO</span><h1>Ocorrências</h1><p>Busque registros, apoie prioridades e exporte informações para mobilização comunitária.</p></div><button id="refresh" class="secondary-button" type="button">↻ Atualizar dados</button></div>
+          <form id="filters" class="filter-panel" role="search">
+            <label>Buscar por bairro ou problema<input id="search" type="search" placeholder="Ex.: rampa, Liberdade" autocomplete="off"></label>
+            <label>Categoria<select id="category"><option value="">Todas as categorias</option><option>Buraco</option><option>Degrau</option><option>Calçada obstruída</option><option>Rampa ausente</option><option>Piso irregular</option><option>Outro</option></select></label>
+            <label>Ordenar por<select id="sorting"><option value="recent">Mais recentes</option><option value="supports">Mais apoiados</option></select></label>
+            <button type="button" class="primary-button export-button" id="export">↓ Exportar CSV</button>
+          </form>
+          <p id="result-count" class="result-count" aria-live="polite"></p>
+          <div id="report-list" class="report-grid" aria-live="polite"></div>
+          <div class="notice"><span aria-hidden="true">ⓘ</span><p>O cadastro de novos relatos é feito pelo app mobile PassoLivre. Esta plataforma serve para consulta e análise coletiva, e não substitui os canais oficiais.</p></div>
+        </section>
+        <section id="sobre" data-page="sobre" hidden>
+          <span class="eyebrow">UMA CITIZENTECH PARA MOBILIDADE</span><h1>O que é o PassoLivre?</h1><p class="intro">Tecnologia para conectar quem percebe uma barreira a quem precisa conhecer melhor os problemas de acessibilidade de um território.</p>
+          <div class="steps">
+            <article class="step"><span class="step-number">01</span><h2>O cidadão registra</h2><p>Pelo aplicativo, durante o trajeto, o cidadão informa categoria, endereço, bairro e descrição. A localização é opcional; relatos sem rede podem ficar guardados para envio posterior.</p></article>
+            <article class="step"><span class="step-number">02</span><h2>A comunidade visualiza</h2><p>Na plataforma web, associações e moradores filtram obstáculos, identificam os bairros mencionados e demonstram apoio a relatos prioritários.</p></article>
+            <article class="step"><span class="step-number">03</span><h2>Os dados ajudam a mobilizar</h2><p>É possível exportar registros para organizar discussões e encaminhá-los aos serviços oficiais. O PassoLivre não garante reparos.</p></article>
+          </div>
+          <div class="mission"><h2>ODS 11 · Cidades e Comunidades Sustentáveis</h2><p>Contribuímos para dar visibilidade às barreiras de mobilidade e à necessidade de espaços públicos inclusivos e acessíveis, especialmente para idosos e pessoas com deficiência.</p></div>
+          <div class="notice"><span aria-hidden="true">ⓘ</span><p>Projeto acadêmico de Juan Marco Oliver, RM 564575, para a Global Solution CitizenTech da FIAP. Não há vínculo com a Prefeitura nem verificação oficial de relatos.</p></div>
+        </section>
+      </main>
+      <footer class="footer"><span>© PassoLivre · FIAP CitizenTech</span><span>Desenvolvido para uma cidade mais acessível · <a href="https://sp156.prefeitura.sp.gov.br/portal/" target="_blank" rel="noopener noreferrer">Serviços oficiais</a></span></footer>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
