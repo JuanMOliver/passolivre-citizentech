@@ -1,0 +1,19 @@
+name: Verificar testes do PassoLivre
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Conferir sintaxe web
+        run: node --check web/app.js
+      - name: Conferir app de dados mobile
+        run: test -s mobile/App.js && test -s mobile/src/service.js
