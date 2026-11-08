@@ -1,4 +1,4 @@
-name: Verificar testes do PassoLivre
+name: Testar PassoLivre (web e bundle mobile)
 on:
   push:
     branches: [main]
@@ -6,14 +6,30 @@ on:
 permissions:
   contents: read
 jobs:
-  tests:
+  web:
+    name: Sintaxe do JavaScript web
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Conferir sintaxe web
-        run: node --check web/app.js
-      - name: Conferir app de dados mobile
-        run: test -s mobile/App.js && test -s mobile/src/service.js
+      - run: node --check web/app.js
+      - run: node --check web/config.js
+  mobile:
+    name: Compilar bundle Expo (iOS)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Instalar dependencias
+        run: npm install --no-audit --no-fund
+      - name: Conferir compatibilidade do SDK
+        run: npx expo install --check
+      - name: Gerar bundle JavaScript iOS
+        run: npx expo export --platform ios --output-dir /tmp/passolivre-bundle
