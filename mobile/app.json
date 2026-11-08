@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "PassoLivre",
+    "slug": "passolivre",
+    "scheme": "passolivre",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#123C35"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Sua localização é opcional e será usada somente se você autorizar o registro das coordenadas do obstáculo."
+      }
+    },
+    "android": {
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ],
+      "adaptiveIcon": {
+        "backgroundColor": "#123C35"
+      }
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "O PassoLivre usa sua localização somente se você escolher adicioná-la a um relato."
+        }
+      ]
+    ],
+    "extra": {
+      "project": "FIAP Global Solution CitizenTech"
+    }
+  }
+}
