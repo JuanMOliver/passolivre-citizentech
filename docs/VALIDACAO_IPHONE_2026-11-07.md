@@ -15,9 +15,10 @@
 - Acessibilidade no iPhone: texto ampliado nas configurações do iOS, VoiceOver, contraste e usabilidade de botões.
 - Resiliência: funcionamento da lista e fila offline, retorno da conexão e mensagens de erro.
 - Teste visual/responsivo da web em diferentes larguras, com capturas.
-- Sincronizar **SDK Expo 58** do aplicativo local testado com o repositório: o `mobile/package.json` remoto ainda apresenta SDK 57 e dependências antigas. Preferir enviar `package.json` e lockfile gerados e testados na máquina, evitando adivinhar versões.
+- **Atualização de 08/11/2026:** `mobile/package.json` remoto passou a declarar SDK Expo 58, React Native 0.88 e React 19.3 conforme documentação oficial. Pendentes a validação da CI da revisão remota, um clone limpo no iPhone e comparação com as versões exatas instaladas localmente. Não há lockfile versionado no repositório.
 - Confirmar CI do GitHub após sincronização e registrar resultado.
-- Documentar entrevistas reais com usuários, equipe exigida, relatório final e vídeo-pitch definitivo. Não fabricar entrevistas ou testes.
+- Documentar entrevistas reais com usuários impactados (mínimo de três conforme proposta acadêmica), relatório final e vídeo-pitch definitivo. Não fabricar entrevistas ou testes.
+- Conferir com a instituição os requisitos de integrantes informados no enunciado original (2 a 5) antes da entrega individual.
 
 ## Observações
 
